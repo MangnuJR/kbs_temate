@@ -4,19 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
 
 
-
-
-Route::get('backend/login', [SSOBrokerController::class, 'authenticateToSSO']);
-Route::get('authenticateToSSO', [SSOBrokerController::class, 'authenticateToSSO']);
-Route::get('authData/{authData}', [SSOBrokerController::class, 'authenticateToSSO']);
-Route::get('logout/{sessionId}', [SSOBrokerController::class, 'logout']);
-Route::get('logout', [SSOBrokerController::class, 'logout']);
-Route::get('changeRole/{role}', [SSOBrokerController::class, 'changeRole'])->name('changeRole');
-
-
-
-
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,15 +14,6 @@ Route::get('changeRole/{role}', [SSOBrokerController::class, 'changeRole'])->nam
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
-Route::group(['middleware' => ['SSOBrokerMiddleware']], function () {
-    Route::get('test', function(){
-       return 'test';
-    });
- }); 
-
-
 
 Route::get('/',[BlogController::class,'index']);
 Route::get('/create',[BlogController::class,'create']);
